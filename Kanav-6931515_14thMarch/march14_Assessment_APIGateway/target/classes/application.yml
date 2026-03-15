@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: book-service
+          uri: lb://march14_Assessment_BookService
+          predicates:
+            - Path=/books/**
+
+        - id: order-service
+          uri: lb://march14_Assessment_OrderService-1
+          predicates:
+            - Path=/order/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9094/eureka
